@@ -9,6 +9,15 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
+pool.on('connect', (client) => {
+  client.query(`SET search_path TO omnifood, public`);
+});
+
+pool.on('error', (err) => {
+  console.log(err);
+  return;
+});
+
 const getClients = () => {
   return new Promise(function (resolve, reject) {
     pool.query('SELECT * FROM clients ORDER BY id ASC', (error, results) => {

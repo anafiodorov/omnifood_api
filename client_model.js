@@ -1,10 +1,12 @@
 const Pool = require('pg').Pool;
+require('dotenv').config({ path: './dev.env' });
+
 const pool = new Pool({
-  user: 'omnifood_adm',
-  host: 'localhost',
-  database: 'omnifood',
-  password: 'ugix',
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
 const getClients = () => {

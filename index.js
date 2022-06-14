@@ -3,8 +3,9 @@ const express = require('express');
 const app = express();
 const port = 3001;
 const client_model = require('./client_model');
+var https = require('https');
 
-app.get('/', (req, res) => {
+app.get('/hello', (req, res) => {
   res.status(200).send('Hello World!');
 });
 
@@ -61,3 +62,7 @@ app.delete('/clients/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
+setInterval(function () {
+  https.get('https://omnifood-app.onrender.com/');
+  https.get('https://omnifood-api.onrender.com/hello');
+}, 1000 * 60 * 25); // every 25 minutes

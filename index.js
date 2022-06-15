@@ -63,6 +63,7 @@ app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
 setInterval(function () {
-  https.get('https://omnifood-app.onrender.com/');
-  https.get('https://omnifood-api.onrender.com/hello');
-}, 1000 * 60 * 25); // every 25 minutes
+  console.log('set interval artizan');
+  https.get('https://artizan.onrender.com/');
+  https.get('https://artizan-api.onrender.com/hello');
+}, 1000 * 60 * 13); // every 13 minutes
